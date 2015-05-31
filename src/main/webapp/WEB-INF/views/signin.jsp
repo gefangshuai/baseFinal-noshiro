@@ -24,6 +24,9 @@
                             </label>
                         </div>
                         <button type="submit" class="btn btn-default">登录</button>
+                        <p>
+                            没有账号？请 <a href="${ctx}/signup">请注册</a>
+                        </p>
                     </form>
                 </div>
                 <div class="col-md-4"></div>

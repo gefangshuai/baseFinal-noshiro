@@ -1,7 +1,9 @@
 package io.github.eternalpro.model;
 
-import cn.dreampie.web.model.Model;
 import com.jfinal.ext.plugin.tablebind.TableBind;
+import com.jfinal.plugin.activerecord.Model;
+
+import java.util.List;
 
 /**
  * Created by gefangshuai on 2015-05-18-0018.
@@ -19,4 +21,7 @@ public class User extends Model<User> {
     }
 
 
+    public List<User> findAll() {
+        return dao.find("select * from sec_user");
+    }
 }

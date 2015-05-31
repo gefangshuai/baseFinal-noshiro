@@ -4,10 +4,11 @@
 <%@ attribute name="css" fragment="true" description="需要引入的额外的css信息或自定义的css，注意：用jsp:attribute调用，不要把此标签设置到属性上" %>
 <%@ attribute name="js" fragment="true" description="需要引入的额外的js信息或自定义的js，注意：用jsp:attribute调用，不要把此标签设置到属性上" %>
 <%@ attribute name="menu" description="菜单" required="true" %>
+<%@attribute name="title" description="页面标题" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>测试项目</title>
+    <title>${title} - 测试项目</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name=“robots” CONTENT="INDEX,FOLLOW">
     <meta name="keywords" content=""/>

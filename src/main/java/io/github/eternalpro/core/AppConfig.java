@@ -13,6 +13,7 @@ import com.jfinal.render.ViewType;
 import io.github.eternalpro.interceptor.AdminInterceptor;
 import io.github.eternalpro.interceptor.FlashMessageInterceptor;
 import io.github.eternalpro.interceptor.GlobalInterceptor;
+import net.wincn.core.AutoTableInfoPlugin;
 
 import java.util.Properties;
 
@@ -78,11 +79,6 @@ public class AppConfig  extends JFinalConfig {
                 dbProperties.getProperty("jdbc.driver")
         );
         dPlugin.addFilter(new StatFilter());
-
-        dPlugin.setTestWhileIdle(true);
-        dPlugin.setTestOnBorrow(true);
-        dPlugin.setTestOnReturn(true);
-
         WallFilter wall = new WallFilter();
         wall.setDbType(JdbcConstants.POSTGRESQL);
         dPlugin.addFilter(wall);
@@ -93,6 +89,10 @@ public class AppConfig  extends JFinalConfig {
         autoTableBindPlugin.setDialect(new PostgreSqlDialect());
         autoTableBindPlugin.setShowSql(true);
         me.add(autoTableBindPlugin);
+
+        // 添加自定义插件
+        AutoTableInfoPlugin autoTableInfoPlugin = new AutoTableInfoPlugin();
+        me.add(autoTableInfoPlugin);
 
     }
 
