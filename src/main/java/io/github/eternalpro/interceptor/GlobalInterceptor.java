@@ -11,7 +11,7 @@ public class GlobalInterceptor implements Interceptor {
     @Override
     public void intercept(ActionInvocation ai) {
         // TODO 用于设置全局的参数，比如动态菜单的产生
-        shiroRedirectToLogin(ai);
+        // shiroRedirectToLogin(ai);
         ai.invoke();
     }
 
