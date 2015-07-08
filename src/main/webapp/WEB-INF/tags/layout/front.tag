@@ -3,8 +3,7 @@
 <%@ attribute name="main" fragment="true" description="主体信息，注意：用jsp:attribute调用，不要把此标签设置到属性上" %>
 <%@ attribute name="css" fragment="true" description="需要引入的额外的css信息或自定义的css，注意：用jsp:attribute调用，不要把此标签设置到属性上" %>
 <%@ attribute name="js" fragment="true" description="需要引入的额外的js信息或自定义的js，注意：用jsp:attribute调用，不要把此标签设置到属性上" %>
-<%@ attribute name="menu" description="菜单" required="true" %>
-<%@attribute name="title" description="页面标题" %>
+<%@attribute name="title" description="页面标题" required="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +23,7 @@
     </script>
 </head>
 <body>
-<layout:header menu="${menu}"/>
+<layout:header menu="${headerMenu}"/>
 <jsp:invoke fragment="main"/>
 <common:js></common:js>
 <script type="text/javascript">

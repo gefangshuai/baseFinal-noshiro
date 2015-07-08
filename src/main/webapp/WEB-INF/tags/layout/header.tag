@@ -16,10 +16,10 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li <c:if test="${empty(menu) || menu eq 'index'}">class="active"</c:if>>
                     <a href="${ctx}/user">用户管理</a>
                 </li>
-                <li><a href="#">Link</a></li>
+                <li <c:if test="${menu eq 'book'}">class="active"</c:if>><a href="${ctx}/book">书籍管理</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

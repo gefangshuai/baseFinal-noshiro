@@ -13,9 +13,19 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>io.github.gefangshuai</groupId>
-            <artifactId>wfinal-core</artifactId>
-            <version>1.0.8</version>
+            <groupId>io.github.gefangshuai.wfinal</groupId>
+            <artifactId>wfinal-model</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.gefangshuai.wfinal</groupId>
+            <artifactId>wfinal-plugin-menumapper</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.gefangshuai.wfinal</groupId>
+            <artifactId>wfinal-flash</artifactId>
+            <version>2.1.0</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -38,19 +48,6 @@
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.4.7</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.gefangshuai</groupId>
-            <artifactId>wincn-commons</artifactId>
-            <type>pom</type>
-            <version>1.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.jfinal</groupId>
-                    <artifactId>jfinal-ext</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>

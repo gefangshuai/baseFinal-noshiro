@@ -19,3 +19,4 @@ if (info) {
 if (warning) {
     toastr.warning(warning);
 }
+

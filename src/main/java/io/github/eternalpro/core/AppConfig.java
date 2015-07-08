@@ -6,14 +6,14 @@ import com.alibaba.druid.wall.WallFilter;
 import com.jfinal.config.*;
 import com.jfinal.ext.plugin.tablebind.AutoTableBindPlugin;
 import com.jfinal.ext.route.AutoBindRoutes;
-import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import io.github.eternalpro.interceptor.AdminInterceptor;
-import io.github.eternalpro.interceptor.FlashMessageInterceptor;
 import io.github.eternalpro.interceptor.GlobalInterceptor;
-import net.wincn.core.AutoTableInfoPlugin;
+import io.github.gefangshuai.plugin.menumapper.MenuMapperPlugin;
+import io.github.gefangshuai.plugin.menumapper.interceptor.MenuMapperInterceptor;
+import io.github.gefangshuai.wfinal.flash.interceptor.FlashMessageInterceptor;
 
 import java.util.Properties;
 
@@ -90,9 +90,10 @@ public class AppConfig  extends JFinalConfig {
         autoTableBindPlugin.setShowSql(true);
         me.add(autoTableBindPlugin);
 
-        // 添加自定义插件
-        AutoTableInfoPlugin autoTableInfoPlugin = new AutoTableInfoPlugin();
-        me.add(autoTableInfoPlugin);
+
+
+        MenuMapperPlugin menuMapperPlugin = new MenuMapperPlugin("headerMenu");
+        me.add(menuMapperPlugin);
 
     }
 
@@ -105,7 +106,7 @@ public class AppConfig  extends JFinalConfig {
         me.add(new AdminInterceptor());
         me.add(new FlashMessageInterceptor());
         me.add(new GlobalInterceptor());
-
+        me.add(new MenuMapperInterceptor());
     }
 
     @Override

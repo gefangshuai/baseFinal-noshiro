@@ -2,10 +2,10 @@ package io.github.eternalpro.controller;
 
 import com.jfinal.core.Controller;
 import com.jfinal.ext.route.ControllerBind;
-import com.jfinal.kit.EncryptionKit;
+import com.jfinal.kit.HashKit;
 import io.github.eternalpro.constant.SessionConstant;
-import io.github.eternalpro.core.FlashMessageUtils;
 import io.github.eternalpro.model.User;
+import io.github.gefangshuai.wfinal.flash.core.FlashMessageUtils;
 import org.apache.commons.lang3.StringUtils;
 
 
@@ -45,7 +45,7 @@ public class IndexController extends Controller {
         if (dbUser == null) {
             FlashMessageUtils.setErrorMessage(this, "用户不存在！");
             redirect("/signin");
-        } else if (!dbUser.getStr("password").equals(EncryptionKit.md5Encrypt(password))) {
+        } else if (!dbUser.getStr("password").equals(HashKit.md5(password))) {
             FlashMessageUtils.setErrorMessage(this, "密码错误！");
             redirect("/signin");
         } else {
@@ -78,7 +78,7 @@ public class IndexController extends Controller {
             FlashMessageUtils.setErrorMessage(this, "两次密码输入不一致！");
             redirect("/signup");
         } else {
-            user.set("password", EncryptionKit.md5Encrypt(password)).save();
+            user.set("password", HashKit.md5(password)).save();
             FlashMessageUtils.setSuccessMessage(this, "注册成功，请登录！");
             redirect("/signin");
         }

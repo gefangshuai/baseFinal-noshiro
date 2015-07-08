@@ -1,14 +1,14 @@
 package io.github.eternalpro.interceptor;
 
 import com.jfinal.aop.Interceptor;
-import com.jfinal.core.ActionInvocation;
+import com.jfinal.aop.Invocation;
 
 /**
  * Created by gefangshuai on 2015/3/25.
  */
 public class AdminInterceptor implements Interceptor {
     @Override
-    public void intercept(ActionInvocation ai) {
+    public void intercept(Invocation ai) {
         String controllerKey = ai.getControllerKey();
         if (controllerKey.startsWith("/admin")) {
             // TODO 需完成登录验证
