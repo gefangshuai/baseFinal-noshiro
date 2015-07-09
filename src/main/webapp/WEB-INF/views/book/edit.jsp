@@ -11,7 +11,7 @@
             <div class="col-md-4">
                 <form action="/book/save" method="post">
                     <c:if test="${!empty(book.id)}">
-                        <input type="text" value="${book.id}" name="book.id"/>
+                        <input type="hidden" value="${book.id}" name="book.id"/>
                     </c:if>
                     <div class="form-group">
                         <label for="name">书籍名称</label>

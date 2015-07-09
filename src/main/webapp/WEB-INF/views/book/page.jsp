@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading" style="height: 50px;">
-                        <form class="input-group col-sm-3 pull-left" method="get" action="/book">
+                        <form class="input-group col-sm-3 pull-left" method="get" action="/book/page">
                             <input type="text" class="form-control input-sm" name="key" placeholder="Search for...">
                             <span class="input-group-btn">
                                 <button class="btn btn-default btn-sm" type="submit">Go!</button>
@@ -22,9 +22,9 @@
                         <table class="table">
                             <thread>
                                 <tr>
-                                    <th>序号</th>
-                                    <th>书名</th>
-                                    <th>作者</th>
+                                    <th width="80">序号</th>
+                                    <th width="250">书名</th>
+                                    <th width="250">作者</th>
                                     <th width="120">操作</th>
                                 </tr>
                             </thread>
@@ -42,6 +42,14 @@
                             </c:forEach>
                             </tbody>
                         </table>
+
+                    </div>
+                    <div class="panel-footer">
+                        <ul class="pagination">
+                            <c:forEach begin="1" step="1" end="${bookPage.totalPage}" varStatus="i">
+                                <li><a href="?page=${i.index}">${i.index}</a></li>
+                            </c:forEach>
+                        </ul>
                     </div>
                 </div>
             </div>

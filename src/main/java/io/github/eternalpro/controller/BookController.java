@@ -2,12 +2,12 @@ package io.github.eternalpro.controller;
 
 import com.jfinal.core.Controller;
 import com.jfinal.ext.route.ControllerBind;
+import com.jfinal.plugin.activerecord.Page;
 import io.github.eternalpro.model.Book;
-import io.github.gefangshuai.plugin.menumapper.core.Menu;
-import io.github.gefangshuai.plugin.model.core.Direction;
-import io.github.gefangshuai.plugin.model.core.Sort;
-import io.github.gefangshuai.wfinal.flash.core.FlashMessage;
 import io.github.gefangshuai.wfinal.flash.core.FlashMessageUtils;
+import io.github.gefangshuai.wfinal.model.search.*;
+import io.github.gefangshuai.wfinal.model.utils.QueryUtils;
+import io.github.gefangshuai.wfinal.plugin.menumapper.core.Menu;
 
 import java.util.List;
 
@@ -16,18 +16,39 @@ import java.util.List;
  */
 @Menu(mapper = "book")
 @ControllerBind(controllerKey = "/book", viewPath = "book")
-public class BookController extends Controller{
-    public void index(){
-        List<Book> books = Book.dao.findAll(new Sort(Book.dao.getPkName(), Direction.DESC));
+public class BookController extends Controller {
+    public void index() {
+//        List<Book> books = Book.dao.findAll(new Sort(Book.dao.getPkName(), Direction.DESC));
+        String key = getPara("key", "");
+        QueryParam queryParam = new QueryParam("name", Operator.LK, QueryUtils.getLikeValue(key));
+        QueryMap queryMap = new QueryMap(queryParam).or("author", Operator.EQ, key);
+//        List<Book> books = Book.dao.findAll(queryMap);
+        List<Book> books = Book.dao.findAll(queryMap, new Sort(Book.dao.getPkName(), Direction.DESC));
         setAttr("books", books);
     }
 
-    public void edit(){
+    /**
+     * 测试分页
+     */
+    @Menu(mapper = "bookpage")
+    public void page() {
+        String key = getPara("key", "");
+        QueryParam queryParam = new QueryParam("name", Operator.LK, QueryUtils.getLikeValue(key));
+        QueryMap queryMap = new QueryMap(queryParam).or("author", Operator.LK, QueryUtils.getLikeValue(key));
+
+        PageRequest pageRequest = new PageRequest(getParaToInt("page", 1), 5);
+        Page<Book> bookPage = Book.dao.pageRecord(pageRequest, queryMap, new Sort("name", Direction.ASC));
+
+        setAttr("books", bookPage.getList());
+        setAttr("bookPage", bookPage);
+    }
+
+    public void edit() {
         Integer id = getParaToInt();
         Book book;
-        if (id == null|| id == 0) {
+        if (id == null || id == 0) {
             book = new Book();
-        }else {
+        } else {
             book = Book.dao.findById(id);
         }
         setAttr("book", book);
@@ -40,7 +61,7 @@ public class BookController extends Controller{
         redirect("/book");
     }
 
-    public void delete(){
+    public void delete() {
         Integer id = getParaToInt();
         Book book = Book.dao.findById(id);
         book.delete();

@@ -20,6 +20,7 @@
                     <a href="${ctx}/user">用户管理</a>
                 </li>
                 <li <c:if test="${menu eq 'book'}">class="active"</c:if>><a href="${ctx}/book">书籍管理</a></li>
+                <li <c:if test="${menu eq 'bookpage'}">class="active"</c:if>><a href="${ctx}/book/page">书籍管理(分页)</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
