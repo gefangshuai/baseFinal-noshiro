@@ -12,8 +12,8 @@ import com.jfinal.render.ViewType;
 import io.github.eternalpro.interceptor.AdminInterceptor;
 import io.github.eternalpro.interceptor.GlobalInterceptor;
 import io.github.gefangshuai.wfinal.flash.interceptor.FlashMessageInterceptor;
-import io.github.gefangshuai.wfinal.plugin.menumapper.MenuMapperPlugin;
-import io.github.gefangshuai.wfinal.plugin.menumapper.interceptor.MenuMapperInterceptor;
+import io.github.gefangshuai.wfinal.menumapper.interceptor.MenuMapperInterceptor;
+import io.github.gefangshuai.wfinal.menumapper.plugin.MenuMapperPlugin;
 
 import java.util.Properties;
 
