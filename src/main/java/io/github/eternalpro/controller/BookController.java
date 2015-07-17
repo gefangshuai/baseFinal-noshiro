@@ -5,9 +5,9 @@ import com.jfinal.ext.route.ControllerBind;
 import com.jfinal.plugin.activerecord.Page;
 import io.github.eternalpro.model.Book;
 import io.github.gefangshuai.wfinal.flash.core.FlashMessageUtils;
+import io.github.gefangshuai.wfinal.menumapper.annotation.Menu;
 import io.github.gefangshuai.wfinal.model.search.*;
 import io.github.gefangshuai.wfinal.model.utils.QueryUtils;
-import io.github.gefangshuai.wfinal.plugin.menumapper.core.Menu;
 
 import java.util.List;
 
