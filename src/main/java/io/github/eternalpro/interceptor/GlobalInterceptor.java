@@ -12,7 +12,13 @@ public class GlobalInterceptor implements Interceptor {
     public void intercept(Invocation ai) {
         // TODO 用于设置全局的参数，比如动态菜单的产生
         // shiroRedirectToLogin(ai);
-        ai.invoke();
+        try {
+            ai.invoke();
+        } catch (Exception e) {
+            e.printStackTrace();
+            ai.getController().setAttr("exception", e);
+            ai.getController().renderError(500);
+        }
     }
 
 }

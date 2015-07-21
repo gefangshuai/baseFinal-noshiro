@@ -11,7 +11,7 @@ import java.util.List;
  */
 @TableBind(tableName = "sec_user", pkName = "id")
 public class User extends WModel<User> {
-    public static User dao = new User();
+    public static final User dao = new User();
 
     public User findByUsername(String loginName) {
         return dao.findFirst("select * from sec_user t where t.username = ?", loginName);

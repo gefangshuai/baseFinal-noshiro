@@ -57,7 +57,7 @@ public class IndexController extends Controller {
         }, getSession());
 
         if (isLogin) {
-            FlashMessageUtils.redirectSuccessMessage(this, "/", "登录成功，欢迎访问！");
+            FlashMessageUtils.redirectSuccessMessage(this, SecurityKit.getUrlBeforeLogin(getSession()), "登录成功，欢迎访问！");
         }else{
             FlashMessageUtils.redirectErrorMessage(this, "/signin", "登录失败，请重新登录！");
         }

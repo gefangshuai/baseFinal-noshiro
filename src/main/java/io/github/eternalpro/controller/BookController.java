@@ -25,7 +25,7 @@ public class BookController extends Controller {
         QueryParam queryParam = new QueryParam("name", Operator.LK, QueryUtils.getLikeValue(key));
         QueryMap queryMap = new QueryMap(queryParam).or("author", Operator.EQ, key);
 //        List<Book> books = Book.dao.findAll(queryMap);
-        List<Book> books = Book.dao.findAll(queryMap, new Sort(Book.dao.getPkName(), Direction.DESC));
+        List<Book> books = Book.dao.findAll(queryMap, new Sort(Book.dao.getPkNames()[0], Direction.DESC));
         setAttr("books", books);
     }
 
