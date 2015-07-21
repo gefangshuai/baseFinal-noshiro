@@ -9,11 +9,12 @@ import com.jfinal.ext.route.AutoBindRoutes;
 import com.jfinal.plugin.activerecord.dialect.PostgreSqlDialect;
 import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
-import io.github.eternalpro.interceptor.AdminInterceptor;
 import io.github.eternalpro.interceptor.GlobalInterceptor;
 import io.github.gefangshuai.wfinal.flash.interceptor.FlashMessageInterceptor;
 import io.github.gefangshuai.wfinal.menumapper.interceptor.MenuMapperInterceptor;
 import io.github.gefangshuai.wfinal.menumapper.plugin.MenuMapperPlugin;
+import io.github.gefangshuai.wfinal.security.interceptor.SecurityInterceptor;
+import io.github.gefangshuai.wfinal.security.plugin.SecurityPlugin;
 
 import java.util.Properties;
 
@@ -90,11 +91,10 @@ public class AppConfig  extends JFinalConfig {
         autoTableBindPlugin.setShowSql(true);
         me.add(autoTableBindPlugin);
 
-
-
         MenuMapperPlugin menuMapperPlugin = new MenuMapperPlugin("headerMenu");
         me.add(menuMapperPlugin);
 
+        me.add(new SecurityPlugin("/signin", true, "subject"));
     }
 
     /**
@@ -103,10 +103,10 @@ public class AppConfig  extends JFinalConfig {
      */
     @Override
     public void configInterceptor(Interceptors me) {
-        me.add(new AdminInterceptor());
         me.add(new FlashMessageInterceptor());
         me.add(new GlobalInterceptor());
         me.add(new MenuMapperInterceptor());
+        me.add(new SecurityInterceptor());
     }
 
     @Override

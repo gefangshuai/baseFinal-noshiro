@@ -18,6 +18,7 @@
                                     <th>用户名</th>
                                     <th>真实姓名</th>
                                     <th>邮箱</th>
+                                    <th>操作</th>
                                 </tr>
                             </thread>
                             <tbody>
@@ -27,6 +28,7 @@
                                     <td>${user.username}</td>
                                     <td>${user.realname}</td>
                                     <td>${user.email}</td>
+                                    <td><a href="/user/view/${user.id}">查看</a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

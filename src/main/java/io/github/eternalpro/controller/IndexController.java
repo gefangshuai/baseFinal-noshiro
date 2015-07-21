@@ -6,6 +6,9 @@ import com.jfinal.kit.HashKit;
 import io.github.eternalpro.constant.SessionConstant;
 import io.github.eternalpro.model.User;
 import io.github.gefangshuai.wfinal.flash.core.FlashMessageUtils;
+import io.github.gefangshuai.wfinal.security.core.SecurityKit;
+import io.github.gefangshuai.wfinal.security.core.Subject;
+import io.github.gefangshuai.wfinal.security.proxy.LoginValidateProxy;
 import org.apache.commons.lang3.StringUtils;
 
 
@@ -39,21 +42,25 @@ public class IndexController extends Controller {
      * 用户登录检查
      */
     public void checkLogin() {
-        String username = getPara("username");
-        String password = getPara("password");
-        User dbUser = User.dao.findByUsername(username);
-        if (dbUser == null) {
-            FlashMessageUtils.setErrorMessage(this, "用户不存在！");
-            redirect("/signin");
-        } else if (!dbUser.getStr("password").equals(HashKit.md5(password))) {
-            FlashMessageUtils.setErrorMessage(this, "密码错误！");
-            redirect("/signin");
-        } else {
-            FlashMessageUtils.setSuccessMessage(this, "登录成功，欢迎！");
-            getSession().setAttribute(SessionConstant.LOGIN_USER, dbUser);
-            redirect("/");
-        }
+        final String username = getPara("username");
+        final String password = getPara("password");
+        final User dbUser = User.dao.findByUsername(username);
 
+        boolean isLogin = SecurityKit.login(new LoginValidateProxy() {
+            @Override
+            public Subject loginCheck() {
+                if (HashKit.md5(password).equals(dbUser.getStr("password"))) {
+                    return new Subject(dbUser, true);
+                }
+                return null;
+            }
+        }, getSession());
+
+        if (isLogin) {
+            FlashMessageUtils.redirectSuccessMessage(this, "/", "登录成功，欢迎访问！");
+        }else{
+            FlashMessageUtils.redirectErrorMessage(this, "/signin", "登录失败，请重新登录！");
+        }
     }
 
 
@@ -88,7 +95,7 @@ public class IndexController extends Controller {
      * 退出登录
      */
     public void logout() {
-        getSession().removeAttribute(SessionConstant.LOGIN_USER);
+        SecurityKit.logout(getSession());
         FlashMessageUtils.setSuccessMessage(this, "退出成功！");
         redirect("/signin");
     }
