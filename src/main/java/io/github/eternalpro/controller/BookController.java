@@ -59,7 +59,7 @@ public class BookController extends Controller {
     public void save() {
         Book book = getModel(Book.class);
         book.saveOrUpdate();
-        FlashMessageUtils.setMessage(this, "msg", "哈哈哈");
+        FlashMessageUtils.setMessage(this, "msg", "保存成功");
         redirect("/book");
     }
 
