@@ -9,7 +9,7 @@
 <head>
     <title>${title} - 测试项目</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name=“robots” CONTENT="INDEX,FOLLOW">
+    <meta name="robots" CONTENT="INDEX,FOLLOW">
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <common:css></common:css>
@@ -23,13 +23,14 @@
     </script>
 </head>
 <body>
+
+
+
 <layout:header menu="${headerMenu}"/>
 <jsp:invoke fragment="main"/>
 <common:js></common:js>
 <script type="text/javascript">
-
 </script>
-
 <jsp:invoke fragment="js"/>
 </body>
 </html>

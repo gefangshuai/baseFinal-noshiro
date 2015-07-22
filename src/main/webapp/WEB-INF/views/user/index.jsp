@@ -6,6 +6,7 @@
     </jsp:attribute>
     <jsp:attribute name="main">
     <div class="container">
+
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">

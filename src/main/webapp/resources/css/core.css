@@ -124,3 +124,13 @@
 .bordered {
     border: 1px solid #c5c5c5;
 }
+
+.toast {
+    position: fixed;
+    z-index: 999999;
+    width: 300px;
+    top: 3px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}

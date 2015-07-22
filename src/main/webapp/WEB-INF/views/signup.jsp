@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/taglibs.jsp" %>
-<layout:front menu="none" title="用户注册">
+<layout:front title="用户注册">
     <jsp:attribute name="css">
 
     </jsp:attribute>
