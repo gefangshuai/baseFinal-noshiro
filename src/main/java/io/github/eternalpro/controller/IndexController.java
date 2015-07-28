@@ -54,15 +54,14 @@ public class IndexController extends Controller {
                 }
                 return null;
             }
-        }, getSession());
+        }, this);
 
         if (isLogin) {
-            FlashMessageUtils.redirectSuccessMessage(this, SecurityKit.getUrlBeforeLogin(getSession()), "登录成功，欢迎访问！");
+            FlashMessageUtils.redirectSuccessMessage(this, SecurityKit.getUrlBeforeLogin(this), "登录成功，欢迎访问！");
         }else{
             FlashMessageUtils.redirectErrorMessage(this, "/signin", "登录失败，请重新登录！");
         }
     }
-
 
     /**
      * 用户注册
@@ -95,7 +94,7 @@ public class IndexController extends Controller {
      * 退出登录
      */
     public void logout() {
-        SecurityKit.logout(getSession());
+        SecurityKit.logout(this);
         FlashMessageUtils.setSuccessMessage(this, "退出成功！");
         redirect("/signin");
     }

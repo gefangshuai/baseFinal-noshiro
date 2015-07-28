@@ -13,6 +13,7 @@ import io.github.eternalpro.interceptor.GlobalInterceptor;
 import io.github.gefangshuai.wfinal.flash.interceptor.FlashMessageInterceptor;
 import io.github.gefangshuai.wfinal.menumapper.interceptor.MenuMapperInterceptor;
 import io.github.gefangshuai.wfinal.menumapper.plugin.MenuMapperPlugin;
+import io.github.gefangshuai.wfinal.security.core.SecurityRule;
 import io.github.gefangshuai.wfinal.security.interceptor.SecurityInterceptor;
 import io.github.gefangshuai.wfinal.security.plugin.SecurityPlugin;
 
@@ -94,7 +95,16 @@ public class AppConfig  extends JFinalConfig {
         MenuMapperPlugin menuMapperPlugin = new MenuMapperPlugin("headerMenu");
         me.add(menuMapperPlugin);
 
-        me.add(new SecurityPlugin("/signin", true, "subject"));
+        SecurityPlugin securityPlugin = new SecurityPlugin();
+        SecurityRule securityRule = new SecurityRule();
+        securityRule.setBackToLoginPage(true);
+        securityRule.setLoginUrl("/signin");
+        securityRule.setSubjectKey("subject");
+        securityRule.setFilterUrls(new String[]{"/user", "/book"});
+
+        securityPlugin.setSecurityRule(securityRule);
+
+        me.add(securityPlugin);
     }
 
     /**
@@ -105,8 +115,6 @@ public class AppConfig  extends JFinalConfig {
     public void configInterceptor(Interceptors me) {
         me.add(new FlashMessageInterceptor());
         me.add(new GlobalInterceptor());
-        me.add(new MenuMapperInterceptor());
-        me.add(new SecurityInterceptor());
     }
 
     @Override

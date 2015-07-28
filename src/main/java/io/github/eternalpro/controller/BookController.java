@@ -8,6 +8,7 @@ import io.github.gefangshuai.wfinal.flash.core.FlashMessageUtils;
 import io.github.gefangshuai.wfinal.menumapper.annotation.Menu;
 import io.github.gefangshuai.wfinal.model.search.*;
 import io.github.gefangshuai.wfinal.model.utils.QueryUtils;
+import io.github.gefangshuai.wfinal.security.annotation.LoginClear;
 import io.github.gefangshuai.wfinal.security.annotation.LoginRequired;
 
 import java.util.List;
@@ -16,9 +17,9 @@ import java.util.List;
  * Created by gefangshuai on 2015/7/7.
  */
 @Menu(mapper = "book")
-@LoginRequired
 @ControllerBind(controllerKey = "/book", viewPath = "book")
 public class BookController extends Controller {
+    @LoginClear
     public void index() {
 //        List<Book> books = Book.dao.findAll(new Sort(Book.dao.getPkName(), Direction.DESC));
         String key = getPara("key", "");
@@ -32,6 +33,7 @@ public class BookController extends Controller {
     /**
      * 测试分页
      */
+    @LoginClear
     @Menu(mapper = "bookpage")
     public void page() {
         String key = getPara("key", "");
