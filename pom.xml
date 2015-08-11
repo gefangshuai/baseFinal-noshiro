@@ -14,24 +14,11 @@
     <dependencies>
         <dependency>
             <groupId>io.github.gefangshuai.wfinal</groupId>
-            <artifactId>wfinal-model</artifactId>
+            <artifactId>wfinal-jar</artifactId>
             <version>${wfinal.version}</version>
+            <type>pom</type>
         </dependency>
-        <dependency>
-            <groupId>io.github.gefangshuai.wfinal</groupId>
-            <artifactId>wfinal-menumapper</artifactId>
-            <version>${wfinal.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.gefangshuai.wfinal</groupId>
-            <artifactId>wfinal-flash</artifactId>
-            <version>${wfinal.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.gefangshuai.wfinal</groupId>
-            <artifactId>wfinal-security</artifactId>
-            <version>${wfinal.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

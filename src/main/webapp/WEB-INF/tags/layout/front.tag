@@ -23,9 +23,6 @@
     </script>
 </head>
 <body>
-
-
-
 <layout:header menu="${headerMenu}"/>
 <jsp:invoke fragment="main"/>
 <common:js></common:js>

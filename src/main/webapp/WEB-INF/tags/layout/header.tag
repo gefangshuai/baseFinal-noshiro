@@ -21,6 +21,7 @@
                 </li>
                 <li <c:if test="${menu eq 'book'}">class="active"</c:if>><a href="${ctx}/book">书籍管理</a></li>
                 <li <c:if test="${menu eq 'bookpage'}">class="active"</c:if>><a href="${ctx}/book/page">书籍管理(分页)</a></li>
+                <li <c:if test="${menu eq 'student'}">class="active"</c:if>><a href="${ctx}/student/edit">学生信息</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
