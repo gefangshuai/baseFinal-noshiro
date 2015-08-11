@@ -4,6 +4,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.ext.route.ControllerBind;
 import io.github.eternalpro.model.Student;
 import io.github.gefangshuai.wfinal.menumapper.annotation.Menu;
+import io.github.gefangshuai.wfinal.security.annotation.AccessClear;
 
 /**
  * @author gefangshuai
@@ -13,6 +14,7 @@ import io.github.gefangshuai.wfinal.menumapper.annotation.Menu;
  *         createDate: 2015/7/30.
  */
 @Menu(mapper = "student")
+@AccessClear
 @ControllerBind(controllerKey = "/student", viewPath = "student")
 public class StudentController extends Controller{
     public void index(){

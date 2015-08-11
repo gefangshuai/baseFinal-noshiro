@@ -50,7 +50,7 @@ public class IndexController extends Controller {
             @Override
             public Subject loginCheck() {
                 if (HashKit.md5(password).equals(dbUser.getStr("password"))) {
-                    return new Subject(dbUser, true);
+                    return new Subject(dbUser, true, new String[]{"/book"});
                 }
                 return null;
             }

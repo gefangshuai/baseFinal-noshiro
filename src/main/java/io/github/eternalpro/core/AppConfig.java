@@ -101,7 +101,7 @@ public class AppConfig  extends JFinalConfig {
         securityRule.setLoginUrl("/signin");
         securityRule.setSubjectKey("subject");
         securityRule.setFilterUrls(new String[]{"/user", "/book"});
-
+        securityRule.setUseAccessActionFilter(true);
         securityPlugin.setSecurityRule(securityRule);
 
         me.add(securityPlugin);

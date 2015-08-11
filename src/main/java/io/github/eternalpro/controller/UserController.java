@@ -6,6 +6,7 @@ import io.github.eternalpro.model.User;
 import io.github.gefangshuai.wfinal.menumapper.annotation.Menu;
 import io.github.gefangshuai.wfinal.model.search.Direction;
 import io.github.gefangshuai.wfinal.model.search.Sort;
+import io.github.gefangshuai.wfinal.security.annotation.AccessClear;
 import io.github.gefangshuai.wfinal.security.annotation.LoginRequired;
 import io.github.gefangshuai.wfinal.security.core.SecurityKit;
 
@@ -18,6 +19,7 @@ import java.util.List;
 @ControllerBind(controllerKey = "/user", viewPath = "user")
 public class UserController extends Controller {
 
+    @AccessClear
     public void index() {
 
         List<User> users = User.dao.findAll(new Sort("id", Direction.ASC));

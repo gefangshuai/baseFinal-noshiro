@@ -9,7 +9,7 @@
     <url>http://maven.apache.org</url>
     <properties>
         <java.version>1.7</java.version>
-        <wfinal.version>2.1.4</wfinal.version>
+        <wfinal.version>2.1.5</wfinal.version>
     </properties>
     <dependencies>
         <dependency>
